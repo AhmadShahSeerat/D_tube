@@ -37,6 +37,8 @@ end
 
 def new 
     @design = Design.new # if we dont have this here then our form wont open, it expects an argument
+    @design.build_collage # or @design.collage = Collage.new
+    #so we create a new design collage to make an association of collage and design
 end
 
 def create
@@ -67,7 +69,8 @@ end
 
 private
 def design_params 
-    params.require(:design).permit(:title, :description, :design_url)
+    params.require(:design).permit(:title, :description, :design_url, :collage_id, collage_attributes: [:name, :description])
+
 end
 
 end

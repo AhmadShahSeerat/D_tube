@@ -5,11 +5,12 @@ class CollagesController < ApplicationController
     end
 
     def show 
-        @collage = Collage.find_by(id: params[:id])
+        @collage = Collage.find(params[:id])
     end
 
     def new 
-        @collage = Collage.find_by(id: params[:id])
+        @collage = Collage.new
+        3.times {@collage.designs.build} #or @collage.images << image.new
     end
 
     def create 
@@ -36,6 +37,7 @@ class CollagesController < ApplicationController
             #todo flash messages 
             render :edit
     end
+end
 
     def destroy 
         @collage = Collage.find_by(id: params[:id])
@@ -46,6 +48,8 @@ class CollagesController < ApplicationController
     private 
     def collage_params
         params.require(:collage).permit(:name, :description)
+        params.require(:collage).permit(:name, :description, designs_attributes: [:title, :description, :design_url])
+
     end
 
 end
