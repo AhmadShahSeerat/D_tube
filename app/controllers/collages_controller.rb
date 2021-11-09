@@ -47,7 +47,6 @@ end
 
     private 
     def collage_params
-        params.require(:collage).permit(:name, :description)
         params.require(:collage).permit(:name, :description, designs_attributes: [:title, :description, :design_url])
 
     end
