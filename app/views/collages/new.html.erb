@@ -1,0 +1,25 @@
+
+
+<h2>Create New Collage</h2>
+<% if @collage.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@collage.errors.count, "error") %> prohibited this collage from being saved:</h2>
+
+    <ul>
+      <% @collage.errors.each do |error| %>
+        <li><%= error.full_message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+ 
+<%= form_with model: @collage do |f| %> <%#= combines form with and tag, but here we specify the model %>
+
+<%= f.label :name %>      <%#= but if we want it like form_tag then we should use url: collage_path  %>
+<%= f.text_field :name %><br>
+<%= f.label :description %>
+<%= f.text_field :description %><br>
+<%= f.submit %>
+
+<% end %>

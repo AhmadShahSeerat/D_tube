@@ -1,0 +1,21 @@
+<% if @collage.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@collage.errors.count, "error") %> The title is taken already:</h2>
+
+    <ul>
+      <% @collage.errors.each do |error| %>
+        <li><%= error.full_message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+  
+
+<h1><%= @collage.name %></h1>
+<div>
+ <%= @collage.dislikes %>
+ </div>
+
+<h1>This Collages Designs</h1>
+
+<%= link_to 'Back', collages_path %>

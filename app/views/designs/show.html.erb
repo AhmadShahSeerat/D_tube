@@ -1,0 +1,30 @@
+
+
+<% if @design.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@design.errors.count, "error") %> The title for this name has already been taken:</h2>
+
+    <ul>
+      <% @design.errors.each do |error| %>
+        <li><%= error.full_message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+  
+<%= image_tag(@design.design_url) %>
+<div>
+<p><%= @design.uploaded_at %></p>
+<p><%= @design.description %></p>
+<p>Views: <%= @design.views %></p>
+<p>Likes: <%= @design.likes %></p>
+<p>Dislikes: <%= @design.dislikes %></p>
+</div>
+
+<%= link_to 'Back to Designs', designs_path %> <br>   <%#=  link to all designs %>
+<%= link_to 'Edit', edit_design_path %><br>
+<%= link_to "Delete", design_path(@design), method: "delete" %>
+
+
+
+

@@ -1,0 +1,64 @@
+<!-- <h3>HTML FORM </h3>
+
+<form action="/designs" method="post">
+ <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+<label for="design[title]">Title:</label>
+<input name="design[title]"><br>
+
+<label for="design[description]">Description:</label>
+<input name="design[description]"><br>
+
+<label for="design[design_url]">Design URL:</label>
+<input name="design[design_url]"><br>
+
+<input type="submit" value="Create Design">
+</form>
+
+===============FORM_FOR==================================
+
+<%= form_for @design do |f| %> <%#= it works with model form_for design.new or @design %>
+<%= f.label :title %>
+<%= f.text_field :title %><br>
+<%= f.label :description %>
+<%= f.text_field :description %><br>
+<%= f.label :design_irl %>
+<%= f.text_field :design_url %><br>
+
+<%= f.submit %>
+<% end %>
+
+=============FORM_TAG=====================
+
+<%= form_tag designs_path do %>
+<%= label_tag :title %>
+<%= text_field_tag :title %><br>
+<%= label_tag :description %>
+<%= text_area_tag :description %><br>
+<%= submit_tag "Create Design" %>
+<% end %>
+-->
+<h2>Create New Design</h2>
+<% if @design.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@design.errors.count, "error") %> prohibited this design from being saved:</h2>
+
+    <ul>
+      <% @design.errors.each do |error| %>
+        <li><%= error.full_message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+ 
+<%= form_with model: @design do |f| %> <%#= combines form with and tag, but here we specify the model %>
+
+<%= f.label :title %>      <%#= but if we want it like form_tag then we should use url: design_path  %>
+<%= f.text_field :title %><br>
+<%= f.label :description %>
+<%= f.text_field :description %><br>
+<%= f.label :design_url %>
+<%= f.text_field :design_url %>
+<%= f.submit %>
+
+<% end %>

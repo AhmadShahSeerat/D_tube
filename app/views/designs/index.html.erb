@@ -1,0 +1,8 @@
+ <h1>All Designs </h1>
+<ul>
+<%= @designs.each do |d| %>
+   <li> 
+   <%= link_to d.title, design_path(d) %> - <%= d.uploaded_at %>
+   </li>
+<% end %>
+</ul>
