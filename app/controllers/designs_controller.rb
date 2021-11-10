@@ -7,6 +7,7 @@ end
 
 def edit  
     @design = Design.find_by(id: params[:id]) # we have to find this image first,
+    render layout: "studio"
 end
 
 def update 
@@ -17,7 +18,7 @@ def update
         redirect_to design_path(@design)
     else  
         #flash messages 
-        render :edit 
+        render :edit, layout: "studio"
     end
 
 end
@@ -39,6 +40,7 @@ def new
     @design = Design.new # if we dont have this here then our form wont open, it expects an argument
     @design.build_collage # or @design.collage = Collage.new
     #so we create a new design collage to make an association of collage and design
+    render layout: "studio"
 end
 
 def create
@@ -47,7 +49,7 @@ def create
     redirect_to design_path(@design)
   else  
     #flash messages
-    render :new 
+    render :new, layout: "studio"
   end
 end
 

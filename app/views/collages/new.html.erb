@@ -1,34 +1,8 @@
 
 
 <h2>Create New Collage</h2>
-<% if @collage.errors.any? %>
-  <div id="error_explanation">
-    <h2><%= pluralize(@collage.errors.count, "error") %> prohibited this collage from being saved:</h2>
 
-    <ul>
-      <% @collage.errors.each do |error| %>
-        <li><%= error.full_message %></li>
-      <% end %>
-    </ul>
-  </div>
-<% end %>
+<%= render partial: 'errors/errors', locals: {model: @collage} %>
 
-<%= form_with model: @collage do |f| %> <%#= combines form with and tag, but here we specify the model %>
-<%= f.label :name %>      <%#= but if we want it like form_tag then we should use url: collage_path  %>
-<%= f.text_field :name %><br>
-<%= f.label :description %>
-<%= f.text_field :description %><br>
-<h1>Create a new Design </h1>
-<%= f.fields_for :designs do |c| %>
-<%= c.label :title %>
-<%= c.text_field :title %><br>
-<%= c.label :description %>
-<%= c.text_field :description %><br>
-<%= c.label :design_url %>
-<%= c.text_field :design_url %><br>
-<hr>
-<% end %>
+<%= render partial: 'form', locals: {form_title: "Create New Collage", model: @collage, submit_button: 'Create Collage'} %>
 
-<%= f.submit %>
-
-<% end %>

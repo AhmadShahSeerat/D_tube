@@ -1,5 +1,5 @@
 class CollagesController < ApplicationController
-    
+    layout "studio", only: [:new, :create, :edit, :update]
     def index 
         @collages = Collage.all
     end
@@ -11,6 +11,7 @@ class CollagesController < ApplicationController
     def new 
         @collage = Collage.new
         3.times {@collage.designs.build} #or @collage.images << image.new
+      
     end
 
     def create 
@@ -24,7 +25,8 @@ class CollagesController < ApplicationController
     end
      
     def edit 
-        @collage = Collage.new
+        @collage = Collage.find(params[:id])
+        render layout: "studio"
     end
     
     def update 

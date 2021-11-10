@@ -1,14 +1,6 @@
 <h2>Create New Design</h2>
-<% if @design.errors.any? %>
-  <div id="error_explanation">
-    <h2><%= pluralize(@design.errors.count, "error") %> prohibited this design from being saved:</h2>
-    <ul>
-      <% @design.errors.each do |error| %>
-        <li><%= error.full_message %></li>
-      <% end %>
-    </ul>
-  </div>
-<% end %>
+
+<%= render partial: 'errors/errors', locals: {model: @design} %>
 
 <%= form_with model: @design do |f| %> <%#= combines form with and tag, but here we specify the model %>
 <%= f.label :title %>      <%#= but if we want it like form_tag then we should use url: design_path  %>

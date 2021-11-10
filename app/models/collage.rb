@@ -1,4 +1,5 @@
 class Collage < ApplicationRecord
+    validates :name, presence: true
     has_many :designs
     accepts_nested_attributes_for :designs, reject_if: proc { |attributes| attributes['title'].blank? }
 

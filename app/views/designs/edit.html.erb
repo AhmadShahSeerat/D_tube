@@ -1,13 +1,16 @@
 <h3>Editting a Design </h3>
 
-<%= form_with model: @design do |f| %>
+<%= render partial: 'errors/errors', locals: {model: @design} %>
+
+
+<%= form_with model: model do |f| %>
 <%= f.label :title %>
 <%= f.text_field :title %> <br>
 <%= f.label :description %>
 <%= f.text_field :description %><br> 
 <%= f.label :design_url %>
 <%= f.text_field :design_url %><br>
-<%= f.submit %>
+<%= f.submit submit_button %>
 <% end %>
 
 <%= link_to "Delete this Design", design_path(@design), method: "delete" %>

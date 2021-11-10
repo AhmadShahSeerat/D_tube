@@ -1,20 +1,10 @@
 
 
-<% if @design.errors.any? %>
-  <div id="error_explanation">
-    <h2><%= pluralize(@design.errors.count, "error") %> The title for this name has already been taken:</h2>
-
-    <ul>
-      <% @design.errors.each do |error| %>
-        <li><%= error.full_message %></li>
-      <% end %>
-    </ul>
-  </div>
-<% end %>
+<%= render partial: 'errors/errors', locals: {model: @design} %>
   
 <%= image_tag(@design.design_url) %>
 <div>
-<p><%= @design.uploaded_at %></p>
+<p><%= format_created_at(@design) %></p>
 <p><%= @design.description %></p>
 <p>Views: <%= @design.views %></p>
 <p>Likes: <%= @design.likes %></p>

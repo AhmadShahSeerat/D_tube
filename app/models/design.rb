@@ -1,5 +1,5 @@
 class Design < ApplicationRecord 
-    belongs_to :collage 
+    belongs_to :collage, optional: true
     validates :title, presence: true, uniqueness: true
     # validates :title, presence: true, uniqueness: {scope: :design_url, message: 'Title and Design_Url are not Unique'}
     validates :description, presence: true
