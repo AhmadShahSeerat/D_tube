@@ -32,17 +32,21 @@ class Design < ApplicationRecord
 
 
 #  scope method for this later on
-    def self.search(query) 
-        self.where("title LIKE ?", "#{query}%")
-    end
 
-    def self.most_recent
-        self.order(created_at: :desc)
-    end
+    scope :search, -> (query) { self.where("title LIKE ?", "#{query}%") }
+    # def self.search(query) 
+    #     self.where("title LIKE ?", "#{query}%")
+    # end
 
-  def uploaded_at 
-     self.created_at.to_date
-  end
+    scope :most_recent, -> { order created_at: :desc}
+    # def self.most_recent
+    #     self.order(created_at: :desc)
+    # end
+
+    scope :uploaded_at, { self.created_at.to_date}
+#   def uploaded_at 
+#      self.created_at.to_date
+#   end
 
 end
 
