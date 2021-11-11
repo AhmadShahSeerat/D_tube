@@ -1,4 +1,8 @@
- <h1>All Designs </h1>
+
+<%= index_header %>
+
+ <%= link_to 'Makes new Designs for Collage', new_collage_design_path(:collage_id) if @collage %><br><!--or (@collage) both works -->
+<!-- show me this create option iff collages/18/designs then show that to me, 18 means that collage exists -->
 <ul>
 <%= render @designs %>
 </ul>

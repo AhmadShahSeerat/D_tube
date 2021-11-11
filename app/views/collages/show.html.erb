@@ -1,20 +1,17 @@
 
-
-
-
-
 <h1><%= @collage.name %></h1>
 <div>
     <p> <%= @collage.description %></p>
 </div>
 
 <h1>THIS COLLAGES DESIGNS: </h1>
-<%#= link_to "Takes us to collage Designs path", collage_designs_path(@collage) %>
 <ul>
-<% @collage.designs.each do |c| %>
-    <li><%= link_to c.title, design_path(c) %> - <%= c.uploaded_at %></li>
+<% @collage.designs.each do |collage| %>
+    <li><%= link_to collage.title, design_path(collage) %> - <%= format_created_at(collage) %></li>
 <% end %>
 </ul>
 
-<%= link_to 'back', collages_path %>
-<%= link_to 'Delete this Collage', collage_path, method: 'delete'%>
+<%= link_to "Takes us to collage Designs path", collage_designs_path(:collage_id) %><br>
+<%= link_to 'back', collages_path %><br>
+<%= link_to 'Delete this Collage', collage_path, method: 'delete'%><br>
+

@@ -2,22 +2,16 @@
 
 <%= render partial: 'errors/errors', locals: {model: @design} %>
 
-<%= form_with model: @design do |f| %> <%#= combines form with and tag, but here we specify the model %>
+<%= form_with model: [@collage, @design] do |f| %> <%#= combines form with and tag, but here we specify the model %>
 <%= f.label :title %>      <%#= but if we want it like form_tag then we should use url: design_path  %>
 <%= f.text_field :title %><br>
 <%= f.label :description %>
 <%= f.text_field :description %><br>
 <%= f.label :design_url %>
 <%= f.text_field :design_url %><br>
-<h2>Select From Existing Collage</h2>
-<%= f.collection_select(:collage_id, Collage.all, :id, :name) %>
-<%#= f is object @design, :params we wanna send, :all collage, :grb frm, :showing  %>
-<h1>Creat New Collage</h1>
-<%= f.fields_for :collage do |c| %>
-<%= c.label :name %>
-<%= c.text_field :name %><br>
-<%= c.label :description %>
-<%= c.text_field :description %><br>
-<% end %>
-<%= f.submit %>
+
+<%= fields_for_helper(f) %>
+
+
+<%= f.submit 'Create Design'%>
 <% end %>

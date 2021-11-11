@@ -1,0 +1,10 @@
+<h2>Select From Existing Collage</h2>
+<%= f.collection_select(:collage_id, Collage.all, :id, :name) %>
+<%#= f is object @design, :params we wanna send, :all collage, :grb frm, :showing  %>
+<h1>Creat New Collage</h1>
+<%= f.fields_for :collage do |c| %>
+<%= c.label :name %>
+<%= c.text_field :name %><br>
+<%= c.label :description %>
+<%= c.text_field :description %><br>
+<% end %>
