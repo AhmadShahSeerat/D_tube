@@ -1,4 +1,5 @@
 class DesignsController < ApplicationController
+    before_action :redirect_if_not_logged_in, only: [:new, :create, :edit, :update]
 before_action :find_action, only: [:index, :new, :create]
 
 def index 

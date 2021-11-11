@@ -1,4 +1,17 @@
 Rails.application.routes.draw do
+
+  get '/signup', to: 'users#new'
+  post 'signup', to: 'users#create'
+
+  get '/login', to: 'sessions#new'
+  post '/login', to: 'sessions#create'
+
+  delete '/logout', to: 'sessions#delete'
+
+  get '/auth/google-oauth2/callback', to: 'sessions#omniauth'
+# resources :users
+  root('static#home')
+  
   resources :collages do 
     resources :designs, only: [:index, :new, :create]  #or :resources shallow: true is kinda same
     #it creates a nested resources for us. /collages/:collage_id/all_designs_path USED INC

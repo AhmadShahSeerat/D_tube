@@ -43,10 +43,10 @@ class Design < ApplicationRecord
     #     self.order(created_at: :desc)
     # end
 
-    scope :uploaded_at, { self.created_at.to_date}
-#   def uploaded_at 
-#      self.created_at.to_date
-#   end
+    # scope :uploaded_at, { self.created_at.to_date}
+  def uploaded_at 
+     self.created_at.to_date
+  end
 
 end
 
