@@ -1,5 +1,3 @@
-
-
 <nav class="navbar navbar-light bg-light">
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
@@ -12,10 +10,9 @@
         <li>
             <%= link_to 'All Collages', collages_path, class: 'nav-link active' %>
         </li>
+       
 
 
-
-<% if logged_in? %>
             <li>
                 <%= link_to 'Create New Design', new_design_path, class: 'nav-link active' %>
             </li>
@@ -25,17 +22,22 @@
             <li>
                 <%= link_to 'LOGOUT', logout_path, class: 'nav-link active', method: 'delete' %>
             </li>
-    
-<% else %>
+        
+
+
             <li>
                 <%= link_to 'LOGIN', login_path, class: 'nav-link active' %>
             </li>
             <li>
                 <%= link_to 'SIGNUP', signup_path, class: 'nav-link active' %>
             </li>
-            
-        <% end %>
+            <li>
+                <%= link_to 'LOGIN WITH GOOGLE', "/auth/google_oauth2", class: 'nav-link active', method: "post" %>
+            </li>
+       
 
+
+         
         </ul>
     </div>
 </nav>

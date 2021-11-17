@@ -18,3 +18,12 @@
 
 
 
+<%= form_with(model: [@design, @comment]) do |f| %>
+    <%= f.hidden_field :user_id, value: current_user.id %>
+    <%= f.hidden_field :design_id, value: @design.id %>
+    <%= f.text_area :content %>
+    <%= f.submit :comment %>
+<% end %>
+
+COMMENTS:
+<%= render @comments %>

@@ -11,7 +11,7 @@ def index
 end
 
 def edit  
-    @design = Design.find_by(id: params[:id]) # we have to find this image first,
+    @design = Design.find_by(id: params[:id]) # we have to find this design first,
     render layout: "studio"
 end
 
@@ -33,10 +33,11 @@ def most_recent
 
  def show
     @design = Design.find_by(id: params[:id])
-    # @design.views +=1 
-    # @design.save
+    @comments = @design.comments
+    @comment = Comment.new(user_id: current_user.id)
+    @design.update(views: @design.views+1) 
+
     
-     @design.update(views: @design.views+1)     
 end
 
 def new 
@@ -47,7 +48,7 @@ def new
     @design.build_collage # and then build a collage associated to that design
     #so we create a new design collage to make an association of collage and design
     end
-    render layout: "studio"
+    render layout: "studio" 
 end
 
 def create

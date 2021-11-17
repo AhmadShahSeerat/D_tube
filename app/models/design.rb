@@ -1,19 +1,48 @@
 class Design < ApplicationRecord 
-    belongs_to :collage, optional: true
-    validates :title, presence: true, uniqueness: true
-    # validates :title, presence: true, uniqueness: {scope: :design_url, message: 'Title and Design_Url are not Unique'}
-    validates :description, presence: true
-    # validates :design_url, presence: true, design_url_format: {on: :create}
-    # on is when we want this validation happens in some methods not all
+    belongs_to :collage, optional: true # collage= COLLAGE OBJECT
+    belongs_to :user, optional: true
+    has_many :comments
+    has_many :users, through: :comments
+    validates :title, presence: true, uniqueness: true # 0
+    validates :description, presence: true # 1 for line 4 and 5
     
-    # accepts_nested_attributes_for :collage
-
-    def collage_attributes=(attributes) #to add diff designs into one collage
+           # 2
+     def collage_attributes=(attributes)  # 3
         if !(attributes[:name].blank? || attributes[:description].blank?)
             self.collage = Collage.find_or_create_by(attributes)
         end
     end
- #for nested forms: three things 
+ 
+# 4
+    # scope :search, -> (query) { self.where("title LIKE ?", "#{query}%") }
+    def self.search(query) 
+        self.where("title LIKE ?", "#{query}%")
+    end
+
+    scope :most_recent, -> { order created_at: :desc}
+    # Design.search("d").where(views: 4)
+    # def self.most_recent
+    #     self.order(created_at: :desc)
+    # end
+   scope :most_viewed, -> { where("views > ?", 10 )} # here i can use find_by but below i couldnt.
+    # def self.most_viewed
+    #     self.all.select {|d| d.views > 10 }
+    # end
+
+  def uploaded_at 
+     self.created_at.to_date
+  end
+
+end
+
+
+    #0 validates :title, presence: true, uniqueness: {scope: :design_url, message: 'Title and Design_Url are not Unique'}
+     #1 validates :design_url, presence: true, design_url_format: {on: :create}
+    #1 on is when we want this validation happens in some methods not all
+    #2 accepts_nested_attributes_for :collage
+    #3 to add diff designs into one collage
+
+  #(4) for nested forms: three things 
  #1: in belongs_to model write accepts_nested_attributes_for :collage
  #2: in form write down a f.field_for :collage do |n| and continue its attributes with n 
 #           last submit would be with f.submit the first variable.
@@ -30,30 +59,18 @@ class Design < ApplicationRecord
 #         end
 #     end
 
+#  scope method for this later on end of (4)
 
-#  scope method for this later on
+  
 
-    scope :search, -> (query) { self.where("title LIKE ?", "#{query}%") }
-    # def self.search(query) 
-    #     self.where("title LIKE ?", "#{query}%")
-    # end
-
-    scope :most_recent, -> { order created_at: :desc}
-    # def self.most_recent
-    #     self.order(created_at: :desc)
-    # end
-
-    # scope :uploaded_at, { self.created_at.to_date}
-  def uploaded_at 
-     self.created_at.to_date
-  end
-
-end
-
-# echo "# D_tube" >> README.md
-# git init
-# git add README.md
-# git commit -m "first commit"
-# git branch -M main
-# git remote add origin git@github.com:AhmadShahSeerat/D_tube.git
-# git push -u origin main
+    
+    
+ 
+    
+    
+    
+    
+    
+    
+    
+    
