@@ -41,3 +41,8 @@
 
 
 notes: domain authorization
+
+
+
+
+not be in association 
