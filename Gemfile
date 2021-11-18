@@ -60,9 +60,8 @@ gem "pry", "~> 0.14.1"
 
 gem "bcrypt", "~> 3.1"
 
+
 gem 'dotenv-rails'
-
 gem 'omniauth-google-oauth2'
-
-
 gem "omniauth-rails_csrf_protection"
+

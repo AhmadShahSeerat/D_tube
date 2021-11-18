@@ -11,6 +11,7 @@
             <%= link_to 'All Collages', collages_path, class: 'nav-link active' %>
         </li>
        
+       <% if logged_in? %> <!-- why is this not working-->
 
 
             <li>
@@ -23,8 +24,8 @@
                 <%= link_to 'LOGOUT', logout_path, class: 'nav-link active', method: 'delete' %>
             </li>
         
-
-
+          <% else %> 
+ 
             <li>
                 <%= link_to 'LOGIN', login_path, class: 'nav-link active' %>
             </li>
@@ -35,6 +36,9 @@
                 <%= link_to 'LOGIN WITH GOOGLE', "/auth/google_oauth2", class: 'nav-link active', method: "post" %>
             </li>
        
+            <% end %>
+
+            
 
 
          

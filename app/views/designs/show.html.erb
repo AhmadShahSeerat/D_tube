@@ -15,7 +15,7 @@
 <%= link_to 'Edit', edit_design_path %><br>
 <%= link_to "Delete", design_path(@design), method: "delete" %>
 
-
+  
 
 
 <%= form_with(model: [@design, @comment]) do |f| %>
@@ -26,4 +26,6 @@
 <% end %>
 
 COMMENTS:
+<ul>
 <%= render @comments %>
+</ul>

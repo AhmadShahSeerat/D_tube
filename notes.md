@@ -34,4 +34,10 @@
  - mvc
    - if in view: it can easily be removed by user in inspect
    - if in controller: if params[:description] == "" render ... it works but no more logic in controller 
-   - if in model: its perfect there            
+   - if in model: its perfect there      
+
+   https://console.developers.google.com        
+
+
+
+notes: domain authorization
