@@ -14,10 +14,10 @@ class Design < ApplicationRecord
     end
  
 # 4
-    # scope :search, -> (query) { self.where("title LIKE ?", "#{query}%") }
-    def self.search(query) 
-        self.where("title LIKE ?", "#{query}%")
-    end
+    scope :search, -> (query) { self.where("title LIKE ?", "#{query}%") }
+    # def self.search(query) 
+    #     self.where("title LIKE ?", "#{query}%")
+    # end
 
     scope :most_recent, -> { order created_at: :desc}
     # Design.search("d").where(views: 4)
