@@ -6,6 +6,7 @@
 <div>
 <p><%= format_created_at(@design) %></p>
 <p><%= @design.description %></p>
+<p>Name: <%=  @design.title %></p>
 <p>Views: <%= @design.views %></p>
 <p>Likes: <%= @design.likes %></p>
 <p>Dislikes: <%= @design.dislikes %></p>
@@ -24,9 +25,9 @@
     <%= f.text_area :content %>
     <%= f.submit :comment %>
 <% end %>
-<% end %>
+<% end %><br>
 
-COMMENTS:
+Comments:
 <ul>
 <%= render @comments %>
 </ul>
