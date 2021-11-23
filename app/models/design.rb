@@ -3,7 +3,7 @@ class Design < ApplicationRecord
     belongs_to :user, optional: true
     has_many :comments
     has_many :users, through: :comments
-    validates :title, presence: true, uniqueness: true 
+    validates :title, presence: true, uniqueness: {scope: :design_url, message: "Title and URL are not unique"}
     validates :description, presence: true 
     
         

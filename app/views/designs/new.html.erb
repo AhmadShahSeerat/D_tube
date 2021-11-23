@@ -2,8 +2,8 @@
 
 <%= render partial: 'errors/errors', locals: {model: @design} %>
 
-<%= form_with model: [@collage, @design] do |f| %> <%#= combines form with and tag, but here we specify the model %>
-<%= f.label :title %>      <%#= but if we want it like form_tag then we should use url: design_path  %>
+<%= form_with model: [@collage, @design] do |f| %> 
+<%= f.label :title %>  
 <%= f.text_field :title %><br>
 <%= f.label :description %>
 <%= f.text_field :description %><br>

@@ -1,22 +1,22 @@
 module DesignsHelper
 
-    def fields_for_helper(f)
-         if @collage                             # then dont add this, i mean hide it
-           f.hidden_field :collage_id, value: @collage.id
-        else  
-            render partial: "fields_for", locals: {f:f}       # if not exist then add this 
+        def fields_for_helper(f)
+            if @collage                        
+            f.hidden_field :collage_id, value: @collage.id
+            else  
+                render partial: "fields_for", locals: {f:f}   
+        end
     end
-end
 
-            def index_header
-                if @collage 
-                content_tag(:h1, "#{@collage.name}  Designs")
-                else 
-                content_tag(:h2, "All Designs")
-            end 
-         end
+    def index_header
+        if @collage 
+        content_tag(:h1, "#{@collage.name}  Designs")
+        else 
+        content_tag(:h2, "All Designs")
+    end 
+    end
 
-    def index_date_format(design) # remeber i can use this method in collage show as well.
+    def index_date_format(design) 
         created = design.created_at.to_datetime
         now = DateTime.now 
         seconds = ((now - created) * 24 * 60 * 60).to_i
