@@ -1,6 +1,6 @@
 class DesignsController < ApplicationController
     before_action :redirect_if_not_logged_in, only: [:new, :create, :edit, :update]
-before_action :find_action, only: [:index, :new, :create]
+    before_action :find_action, only: [:index, :new, :create]
 
 def index 
     if @collage
@@ -34,9 +34,7 @@ def most_recent
     @comments = @design.comments
     @comment = Comment.new(user_id: current_user.id) if logged_in?
     
-    @design.update(views: @design.views+1) 
-
-    
+    @design.update(views: @design.views+1)
 end
 
 def new 
@@ -78,7 +76,7 @@ private
     def design_params 
         params.require(:design).permit(:title, :description, :design_url, :collage_id, collage_attributes: [:name, :description])
     end
-        def find_action
-            @collage = Collage.find_by_id(params[:collage_id])
-        end 
+    def find_action
+        @collage = Collage.find_by_id(params[:collage_id])
+    end 
 end

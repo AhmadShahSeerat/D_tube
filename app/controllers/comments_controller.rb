@@ -10,7 +10,6 @@ class CommentsController < ApplicationController
             flash[:message] = "BRO DIDNT WORK"
             redirect_to design_path(@design)
         end
-
     end
 
     private

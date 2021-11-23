@@ -10,7 +10,7 @@ class CollagesController < ApplicationController
 
     def new 
         @collage = Collage.new
-        3.times {@collage.designs.build} #or @collage.images << image.new
+        3.times {@collage.designs.build} 
       
     end
 
@@ -19,7 +19,6 @@ class CollagesController < ApplicationController
         if @collage.save 
             redirect_to collage_path(@collage)
         else 
-            #flash messages 
             render :new 
         end
     end
@@ -36,7 +35,6 @@ class CollagesController < ApplicationController
         if @collage.valid?
             redirect_to collage_path(@collage)
         else 
-            #todo flash messages 
             render :edit
     end
 end
@@ -54,4 +52,3 @@ end
     end
 
 end
-#association
