@@ -46,3 +46,13 @@ notes: domain authorization
 
 
 not be in association 
+
+
+
+echo "# copy-DDDD-Project" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main
+git remote add origin git@github.com:AhmadShahSeerat/copy-DDDD-Project.git
+git push -u origin main
